@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+    <head>
+        <title>New Flight</title>
+    </head>
+
+    <body>
+        <%- include('../partials/navbar') %>
+            <div class="container mt-3">
+                <form action="/flights" method="POST">
+                    <div class="container">
+                        <label for="airline">Airline:</label>
+                        <select name="airline" id="airline">
+                            <option value="American">American</option>
+                            <option value="Southwest">Southwest</option>
+                            <option value="United">United</option>
+                        </select>
+                    </div>
+                    <div class="container">
+                        <label for="airport">Airport:</label>
+                        <select name="airport" id="airport">
+                            <option value="AUS">AUS</option>
+                            <option value="DFW">DFW</option>
+                            <option value="DEN">DEN</option>
+                            <option value="LAX">LAX</option>
+                            <option value="SAN">SAN</option>
+                        </select>
+                    </div>
+                    <div class="container">
+                        <label for="flightNo">Flight Number:</label>
+                        <input type="number" name="flightNo">
+                    </div>
+                    <div class="container">
+                        <label for="departs">Departure Time:</label>
+                        <input type="datetime-local" name="departs">
+                    </div>
+                    <div class="container">
+                        <input type="submit">
+                    </div>
+                </form>
+            </div>
+    </body>
+
+</html>
