@@ -18,7 +18,8 @@
                     </thead>
                     <tbody>
                         <% flights.forEach(flight=> { %>
-                            <tr>
+                            <!-- Resume Here -->
+                            <tr <%- flight.departs < currDate ? 'style="color: red"' : '' %> >
                                 <td>
                                     <%= flight.airline %>
                                 </td>

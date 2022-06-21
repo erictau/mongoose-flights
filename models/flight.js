@@ -20,9 +20,7 @@ const flightSchema = new Schema({
         type: Date,
         default: function() {
             const currDate = new Date();
-            console.log(currDate, "CURRENT DATE")
             const futureDate = new Date(currDate.getFullYear() + 1, currDate.getMonth(), currDate.getDate())
-            console.log(futureDate, "FUTURE DATE")
             return futureDate;
         }
     },

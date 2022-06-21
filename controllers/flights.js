@@ -9,11 +9,11 @@ module.exports = {
 function index(req, res) {
     Flight.find({} , function(err, flights) {
         if (err) return res.redirect('/');
-
+        const currDate = new Date();
         return res.render('flights/index', {
-            flights
+            flights, currDate
         })
-    })
+    }).sort('departs');
 }
 
 function newFlight(req, res) {
@@ -27,7 +27,6 @@ function newFlight(req, res) {
 }
 
 function create(req,res) {
-    console.log(req.body);
     for (let prop in req.body) {
         if (req.body[prop] === '') delete req.body[prop];
     }
