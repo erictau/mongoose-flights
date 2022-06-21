@@ -4,6 +4,7 @@ module.exports = {
     index,
     new: newFlight,
     create,
+    show,
 }
 
 function index(req, res) {
@@ -28,10 +29,20 @@ function newFlight(req, res) {
     });
 }
 
-function create(req,res) {
+function create(req, res) {
     for (let prop in req.body) {
         if (req.body[prop] === '') delete req.body[prop];
     }
     Flight.create(req.body);
     res.redirect('/flights');
+}
+
+function show(req, res) {
+    Flight.findById(req.params.id, function(err, flight) {
+        if (err) return res.redirect('/flights')
+        flight.flightNo ? title = `${flight.airline} ${flight.flightNo}` :  title = 'Flight Details';
+        res.render('flights/show', {
+            title, flight
+        })
+    })
 }

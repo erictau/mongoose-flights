@@ -6,3 +6,15 @@ button a {
   text-decoration: none;
   color: white;
 }
+
+button a:hover {
+  color: black;
+}
+
+tr:hover {
+  background-color: lightskyblue;
+}
+
+.flex-cards {
+  display: flex;
+}

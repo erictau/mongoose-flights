@@ -11,10 +11,10 @@
                         <th>Airport</th>
                         <th>Flight No.</th>
                         <th>Departure Time</th>
+                        <th>Flight Details</th>
                     </thead>
                     <tbody>
                         <% flights.forEach(flight=> { %>
-                            <!-- Resume Here -->
                             <tr <%- flight.departs < currDate ? 'style="color: red"' : '' %> >
                                 <td>
                                     <%= flight.airline %>
@@ -27,6 +27,10 @@
                                 </td>
                                 <td>
                                     <%= flight.departs %>
+                                </td>
+                                <td>
+                                    <button class="btn btn-secondary btn-sm"><a href="/flights/<%= flight._id %>">
+                                            DETAILS</a></button>
                                 </td>
                             </tr>
                             <% }) %>
