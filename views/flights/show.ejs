@@ -5,7 +5,7 @@
     <body>
         <%- include('../partials/navbar') %>
             <div class="container mt-3 flex-cards">
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Departure</h5>
                         <h6 class="card-subtitle mb-2 text-muted">
@@ -17,26 +17,42 @@
                 <div class="arrow">
                     &rarr;
                 </div>
-                <!-- Insert looped destinations here -->
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Add Destination</h5>
-                        <form action="/flights/<%= flight._id %>/destinations" method="POST">
-                            <label for="arrival">Arrival Time:</label>
-                            <input type="datetime-local" class="form-control" name="arrival" required>
-                            <label for="airport">Airport:</label>
-                            <select name="airport" id="airport">
-                                <option value="AUS">AUS</option>
-                                <option value="DFW">DFW</option>
-                                <option value="DEN">DEN</option>
-                                <option value="LAX">LAX</option>
-                                <option value="SAN">SAN</option>
-                            </select>
-                            <button class="btn btn-primary btn-sm">Add Destination</button>
-                        </form>
+
+                <% flight.destinations.forEach((destination, index)=> { %>
+
+                    <div class="container mt-3 flex-cards">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Destination <%= index + 1 %> - <%= destination.airport %>
+                                </h5>
+                                <p class="card-text">Arrives at <%= destination.arrival %>.</p>
+                            </div>
+                        </div>
+                        <div class="arrow">
+                            &rarr;
+                        </div>
+                        <% }) %>
+
+                            <!-- Insert looped destinations here -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Add Destination</h5>
+                                    <form action="/flights/<%= flight._id %>/destinations" method="POST">
+                                        <label for="arrival">Arrival Time:</label>
+                                        <input type="datetime-local" class="form-control" name="arrival" required>
+                                        <label for="airport">Airport:</label>
+                                        <select name="airport" id="airport">
+                                            <option value="AUS">AUS</option>
+                                            <option value="DFW">DFW</option>
+                                            <option value="DEN">DEN</option>
+                                            <option value="LAX">LAX</option>
+                                            <option value="SAN">SAN</option>
+                                        </select>
+                                        <button class="btn btn-primary btn-sm">Add Destination</button>
+                                    </form>
+                                </div>
+                            </div>
                     </div>
-                </div>
-            </div>
     </body>
 
 </html>
