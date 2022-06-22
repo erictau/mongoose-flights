@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
+// Variables
 const airports = ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'];
 
+// Schemas
 const destinationSchema = new Schema({
     airport: {
         type: String,

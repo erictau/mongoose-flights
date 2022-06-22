@@ -11,7 +11,7 @@ button a:hover {
   color: black;
 }
 
-tr:hover {
+tbody tr:hover {
   background-color: lightskyblue;
 }
 

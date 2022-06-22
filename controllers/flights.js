@@ -40,9 +40,22 @@ function create(req, res) {
 function show(req, res) {
     Flight.findById(req.params.id, function(err, flight) {
         if (err) return res.redirect('/flights')
+
+        // Identify airports that have not been visited.
+        const remainingAirports = ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'];
+        
+        const airportsVisited = [];
+        airportsVisited.push(flight.airport);
+        flight.destinations.forEach(destination => airportsVisited.push(destination.airport));
+
+        airportsVisited.forEach(visited => {
+            let i = remainingAirports.findIndex(remaining => remaining === visited);
+            if (i !== -1) remainingAirports.splice(i, 1);
+        });
+
         flight.flightNo ? title = `${flight.airline} ${flight.flightNo}` :  title = 'Flight Details';
         res.render('flights/show', {
-            title, flight
-        })
-    })
+            title, flight, remainingAirports
+        });
+    });
 }
