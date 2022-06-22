@@ -9,6 +9,7 @@ function create(req, res) {
         if (err) res.redirect(`/flights`);
         
         flight.destinations.push(req.body);
+        flight.destinations.sort((a, b) => a.arrival -  b.arrival);
         flight.save(function(err) {
             if (err) res.redirect(`/flights`);
             res.redirect(`/flights/${req.params.id}`)
