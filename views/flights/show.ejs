@@ -9,12 +9,14 @@
                     <div class="card-body">
                         <h5 class="card-title">Departure</h5>
                         <h6 class="card-subtitle mb-2 text-muted">
-                            <%= `${flight.airline} ${flight.flightNo}` %>
+                            <%= `${flight.airline} - Flight ${flight.flightNo}` %>
                         </h6>
                         <p class="card-text">Departs from <%= flight.airport %> at <%= flight.departs %>.</p>
                     </div>
                 </div>
-
+                <div class="arrow">
+                    &rarr;
+                </div>
                 <!-- Insert looped destinations here -->
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
