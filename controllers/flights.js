@@ -1,4 +1,5 @@
 const Flight = require('../models/flight');
+const Ticket = require('../models/ticket');
 
 module.exports = {
     index,
@@ -53,9 +54,18 @@ function show(req, res) {
             if (i !== -1) remainingAirports.splice(i, 1);
         });
 
+        // Tickets
+        let tickets = []
+        Ticket.find({flight: flight._id}, function(err, flightTickets) {
+            flightTickets.forEach(ticket => tickets.push(ticket.seat));
+        });
+        console.log(tickets, "TICKETS");
+        // Title
         flight.flightNo ? title = `${flight.airline} ${flight.flightNo}` :  title = 'Flight Details';
+
+
         res.render('flights/show', {
-            title, flight, remainingAirports
+            title, flight, remainingAirports, tickets
         });
     });
 }
