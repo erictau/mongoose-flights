@@ -39,6 +39,7 @@ function create(req, res) {
 }
 
 function show(req, res) {
+    let tickets = []
     Flight.findById(req.params.id, function(err, flight) {
         if (err) return res.redirect('/flights')
 
@@ -55,17 +56,18 @@ function show(req, res) {
         });
 
         // Tickets
-        let tickets = []
         Ticket.find({flight: flight._id}, function(err, flightTickets) {
-            flightTickets.forEach(ticket => tickets.push(ticket.seat));
-        });
-        console.log(tickets, "TICKETS");
-        // Title
-        flight.flightNo ? title = `${flight.airline} ${flight.flightNo}` :  title = 'Flight Details';
+            flightTickets.forEach(ticket => {
+                tickets.push(ticket.seat)
+            });
 
+            // Title
+            flight.flightNo ? title = `${flight.airline} ${flight.flightNo}` :  title = 'Flight Details';
+    
+            res.render('flights/show', {
+                title, flight, remainingAirports, tickets
+            });
 
-        res.render('flights/show', {
-            title, flight, remainingAirports, tickets
-        });
+        }).sort('seat');
     });
 }

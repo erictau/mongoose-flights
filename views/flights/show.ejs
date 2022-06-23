@@ -9,9 +9,16 @@
                 <div class="card mt-2">
                     <div class="card-body">
                         <h5 class="card-title">Tickets</h5>
-                        <% if (tickets.length === 0) tickets = 'No tickets sold yet.' %>
-                        <%= tickets.toString() %>
+                        <button class="btn btn-primary btn-sm"><a href="/flights/<%= flight._id %>/tickets/new">Add Ticket</a></button>
+                        <p class="mt-2">
+                            <% if (tickets.length === 0) tickets = 'No tickets sold yet.' %>
+                            <%= tickets.toString() %>
+                        </p>
                     </div>
+                </div>
+
+                <div class="arrow" style="visibility:hidden">
+                    &rarr;
                 </div>
 
                 <div class="card mt-2">
