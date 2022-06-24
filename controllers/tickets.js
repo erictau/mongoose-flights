@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 module.exports = {
     new: newTicket,
     create,
+    delete: deleteTicket,
 }
 
 function newTicket(req, res) {
@@ -20,4 +21,9 @@ function create(req, res) {
             res.redirect(`/flights/${req.params.id}`);
         });
     })
+}
+
+function deleteTicket(req, res) {
+    Ticket.deleteOne({ _id: req.params.ticketId })
+    .then(res.redirect(`/flights/${req.params.flightId}`));
 }

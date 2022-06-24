@@ -14,7 +14,7 @@
                             <%= tickets.length === 0 ? 'No tickets sold yet.' : '' %>
                             <% tickets.forEach(ticket => { %>
                                 <form action="/flights/<%= flight._id %>/tickets/<%= ticket._id %>?_method=DELETE" method="POST">
-                                <%-`<button class="btn btn-secondary btn-sm" name="ticketId" type="submit" value=${ticket._id}>${ticket.seat}</button>`%>
+                                <%-`<button class="btn btn-secondary btn-sm m-1" name="ticketId" type="submit" value=${ticket._id}>${ticket.seat}</button>`%>
                                 </form>
                             <% }) %> 
                         </div>
