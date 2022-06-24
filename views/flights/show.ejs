@@ -10,10 +10,14 @@
                     <div class="card-body">
                         <h5 class="card-title">Tickets</h5>
                         <button class="btn btn-primary btn-sm"><a href="/flights/<%= flight._id %>/tickets/new">Add Ticket</a></button>
-                        <p class="mt-2">
-                            <% if (tickets.length === 0) tickets = 'No tickets sold yet.' %>
-                            <%= tickets.toString() %>
-                        </p>
+                        <div class="mt-2 ticket-section">
+                            <%= tickets.length === 0 ? 'No tickets sold yet.' : '' %>
+                            <% tickets.forEach(ticket => { %>
+                                <form action="/flights/<%= flight._id %>/tickets/<%= ticket._id %>?_method=DELETE" method="POST">
+                                <%-`<button class="btn btn-secondary btn-sm" name="ticketId" type="submit" value=${ticket._id}>${ticket.seat}</button>`%>
+                                </form>
+                            <% }) %> 
+                        </div>
                     </div>
                 </div>
 

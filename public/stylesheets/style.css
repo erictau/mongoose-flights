@@ -30,5 +30,21 @@ tbody tr:hover {
 
 .card {
   width: 300px;
-  height: 200px;
+  height: 250px;
+}
+
+.ticket-section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  align-content: flex-start;
+  justify-content: space-between;
+}
+
+.ticket-section button.btn {
+  width: 60px;
+}
+
+.ticket-section button.btn:hover {
+  background-color: red;
 }

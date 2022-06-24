@@ -58,7 +58,7 @@ function show(req, res) {
         // Tickets
         Ticket.find({flight: flight._id}, function(err, flightTickets) {
             flightTickets.forEach(ticket => {
-                tickets.push(ticket.seat)
+                tickets.push(ticket)
             });
 
             // Title
